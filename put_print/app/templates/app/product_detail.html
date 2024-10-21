@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ product.type }}</title>
+</head>
+<body>
+    <h1>{{ product.type }}</h1>
+    <p>Price: ${{ product.price }}</p>
+    {% if product.product_image %}
+        <img src="{{ product.product_image.url }}" alt="{{ product.type }}">
+    {% else %}
+        <p>No image available.</p>
+    {% endif %}
+    <p>Added on: {{ product.created_at|date:"F j, Y" }}</p>
+    <a href="{% url 'product_update' product.product_id %}">Edit</a>
+    <form action="{% url 'product_delete' product.product_id %}" method="POST" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+    <a href="{% url 'products' %}">Back to Products</a>
+</body>
+</html>
+

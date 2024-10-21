@@ -1,0 +1,62 @@
+# User Model:
+/users
+  GET: Retrieve a list of users
+  POST: Create a new user
+
+/users/{user_id}
+  GET: Retrieve a specific user by ID
+  PATCH: Update user information
+  PATCH (status: inactive): Deactivate user (soft delete)
+
+# Product Model:
+/products
+  GET: Retrieve all products
+  POST: Create a new product
+
+/products/{product_id}
+  GET: Retrieve specific product by ID
+  PATCH: Update product details
+  PATCH (status: unavailable): Mark product as unavailable (soft delete)
+
+# Order Model:
+/orders
+  GET: Retrieve all orders
+  POST: Create a new order
+
+/orders/{order_id}
+  GET: Retrieve specific order by ID
+  PATCH: Update order status
+  PATCH (status: canceled): Cancel the order
+
+/orders/{order_id}/items
+  GET: Retrieve all items for the order
+  POST: Add item to the order
+
+# OrderItem Model:
+/order-items
+  GET: Retrieve all order items
+  PATCH: Update order item details
+  PATCH (status: removed): Remove order item (soft delete)
+
+# Customization Model:
+/customizations
+  GET: Retrieve all customizations
+  POST: Create a new customization
+
+/customizations/{customization_id}
+  GET: Retrieve a specific customization by ID
+  PATCH: Update customization details
+  PATCH (status: inactive): Delete (soft delete) customization
+
+# Customization and color relationships:
+/customizations/{customization_id}/colors
+  GET: Retrieve color information for the customization
+  POST: Add color information for the customization
+
+/colors
+  GET: Retrieve all available colors
+
+/colors/{color_id}
+  GET: Retrieve specific color information
+  PATCH: Update color details
+  PATCH (status: unavailable): Mark color as unavailable (soft delete)

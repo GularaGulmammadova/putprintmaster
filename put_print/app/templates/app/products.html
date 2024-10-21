@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app/styles.css' %}">
+</head>
+<body>
+    <h1>Available Products</h1>
+
+    <div class="product-list">
+        {% for product in products %}
+        <div class="product-item">
+            <h2>{{ product.type }}</h2>
+            <p>Price: ${{ product.price }}</p>
+            {% if product.product_image %}
+                <img src="{{ product.product_image.url }}" alt="{{ product.type }}" width="150px">
+            {% else %}
+                <!-- <img src="{% static 'img/no_image_available.png' %}" alt="No Image Available" width="150px"> -->
+            {% endif %}
+            <p>Added on: {{ product.created_at|date:"F j, Y" }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
